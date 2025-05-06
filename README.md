@@ -40,6 +40,9 @@ cd ds-doc-scraper
 
 # Install dependencies
 pip install -r requirements.txt
+
+# Make scripts executable (macOS/Linux only)
+chmod +x scripts/*.py scripts/*.sh
 ```
 
 ### Option 2: Using Virtual Environment (Recommended)
@@ -60,7 +63,12 @@ venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
+
+# Make scripts executable (macOS/Linux only)
+chmod +x scripts/*.py scripts/*.sh
 ```
+
+> **Note for Windows users**: The `chmod` command is not needed on Windows. You may need to adjust how you run the scripts (e.g., `python scripts/scraper.py` instead of directly executing them).
 
 ## Quick Start Guide
 
