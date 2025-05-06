@@ -103,10 +103,25 @@ python scripts/batch_scraper.py urls.csv --output knowledge_base --workers 3 --d
 
 ### 3. Organize the Content (Optional)
 
-Organize the scraped content into a clean structure:
+Choose one of these options to organize your scraped content:
+
+#### Option 1: Basic Organization
 ```bash
+# Use predefined categories (getting-started, features, etc.)
 bash scripts/organize_docs.sh knowledge_base --output organized_docs
 ```
+
+#### Option 2: Interactive Organization (Recommended)
+```bash
+# Interactive script with customizable categories and options
+bash scripts/interactive_organize.sh
+```
+
+The interactive organizer lets you:
+- Define your own categories
+- Customize keywords for categorization
+- Maintain existing directory structure
+- Preview and get summaries of changes
 
 ### 4. Prepare for GitHub Deployment (Optional)
 

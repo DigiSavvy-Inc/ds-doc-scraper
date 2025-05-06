@@ -57,8 +57,16 @@ python scripts/check_missing.py <input_path> <docs_dir>
 ```
 bash scripts/organize_docs.sh <input_dir> [--output <dir>]
 ```
-- Organizes scraped markdown files
+- Organizes scraped markdown files using predefined categories
 - Improves filenames for better readability (removes trailing underscores, etc.)
+
+```
+bash scripts/interactive_organize.sh
+```
+- Interactive script for organizing markdown files
+- Allows custom categories and keywords
+- Provides options to maintain existing structure
+- Offers file organization previews and summaries
 
 ```
 bash prepare_for_deployment.sh
