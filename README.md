@@ -92,6 +92,8 @@ Here's how to scrape your first website:
 
 ## Usage Examples
 
+### Standard Usage
+
 ```bash
 # Scrape URLs from a CSV file
 python scripts/scraper.py input.csv --output knowledge_base --delay 1
@@ -111,6 +113,30 @@ bash scripts/organize_docs.sh knowledge_base --output organized_docs
 # Prepare for GitHub deployment
 bash prepare_for_deployment.sh
 ```
+
+### Conservative Usage (Avoiding Rate Limiting)
+
+```bash
+# Parse sitemap with longer delays between requests
+python scripts/sitemap_parser.py https://example.com/sitemap.xml --output urls.csv
+
+# Scrape with conservative delay (3 seconds between requests)
+python scripts/scraper.py urls.csv --output knowledge_base --delay 3
+
+# Batch scrape with fewer workers and longer delays
+python scripts/batch_scraper.py urls.csv --output knowledge_base --workers 2 --delay 5
+
+# For very strict rate limits, use single worker with long delays
+python scripts/scraper.py urls.csv --output knowledge_base --delay 10
+```
+
+### Tips for Avoiding Rate Limits
+
+- Increase the `--delay` parameter (in seconds) to slow down requests
+- Reduce the number of `--workers` when using batch_scraper.py
+- Consider scraping in smaller batches by splitting your CSV file
+- Run scraping during off-peak hours for the target website
+- Add appropriate User-Agent headers (scripts already include this)
 
 ### Input Format
 
