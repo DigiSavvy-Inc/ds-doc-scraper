@@ -206,4 +206,8 @@ After running the deployment script, follow the on-screen instructions to initia
 
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+We would like to thank the developers of the libraries and tools that make this project possible. See [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) for the complete list.
