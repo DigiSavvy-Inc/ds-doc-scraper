@@ -25,14 +25,18 @@ This repository provides tools to gather documentation from websites and convert
 - Clean and format filenames
 - Parallel processing for faster scraping
 
+# Getting Started
+
+This guide will help you get up and running with the documentation scraper.
+
 ## Installation
 
 ### Option 1: Standard Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/content-scraper.git
-cd content-scraper
+git clone https://github.com/DigiSavvy-Inc/ds-doc-scraper.git
+cd ds-doc-scraper
 
 # Install dependencies
 pip install -r requirements.txt
@@ -42,8 +46,8 @@ pip install -r requirements.txt
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/content-scraper.git
-cd content-scraper
+git clone https://github.com/DigiSavvy-Inc/ds-doc-scraper.git
+cd ds-doc-scraper
 
 # Create virtual environment
 python -m venv venv
@@ -58,37 +62,65 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## Step-by-Step Guide
+## Quick Start Guide
 
-Here's how to scrape your first website:
+Here's a complete workflow to scrape your first documentation website:
 
-1. **Get URLs to scrape** (choose one method):
-   ```bash
-   # Method A: Extract URLs from a sitemap
-   python scripts/sitemap_parser.py https://example.com/sitemap.xml --output urls.csv
-   
-   # Method B: Create your own CSV file with URLs to scrape
-   # (Create a CSV file with a column named "url")
-   ```
+### 1. Get URLs to Scrape
 
-2. **Run the scraper**:
-   ```bash
-   # Option 1: Basic scraper
-   python scripts/scraper.py urls.csv --output knowledge_base --delay 1
-   
-   # Option 2: Parallel scraper (faster)
-   python scripts/batch_scraper.py urls.csv --output knowledge_base --workers 5
-   ```
+You need a list of URLs to scrape. Choose one of these methods:
 
-3. **Organize the content** (optional):
-   ```bash
-   bash scripts/organize_docs.sh knowledge_base --output organized_docs
-   ```
+#### Method A: Extract URLs from a Sitemap
+```bash
+# Replace with your target website's sitemap URL
+python scripts/sitemap_parser.py https://docs.example.com/sitemap.xml --output urls.csv
+```
 
-4. **Prepare for GitHub deployment** (optional):
-   ```bash
-   bash prepare_for_deployment.sh
-   ```
+#### Method B: Create a CSV File Manually
+Create a file named `urls.csv` with a column header "url" containing the URLs:
+```
+url
+https://docs.example.com/page1.html
+https://docs.example.com/page2.html
+https://docs.example.com/page3.html
+```
+
+### 2. Run the Scraper
+
+Choose one of these options based on your needs:
+
+#### Option 1: Basic Scraper (Safe Option)
+```bash
+# Standard scraping with 2-second delay between requests
+python scripts/scraper.py urls.csv --output knowledge_base --delay 2
+```
+
+#### Option 2: Parallel Scraper (Faster)
+```bash
+# Use multiple workers for faster processing
+python scripts/batch_scraper.py urls.csv --output knowledge_base --workers 3 --delay 2
+```
+
+### 3. Organize the Content (Optional)
+
+Organize the scraped content into a clean structure:
+```bash
+bash scripts/organize_docs.sh knowledge_base --output organized_docs
+```
+
+### 4. Prepare for GitHub Deployment (Optional)
+
+Create a clean deployment package for GitHub:
+```bash
+bash prepare_for_deployment.sh
+```
+
+### 5. View Your Documentation
+
+The converted Markdown files will be in:
+- `knowledge_base/` - Raw scraped files
+- `organized_docs/` - Organized documentation (if you ran step 3)
+- `deployment/` - GitHub-ready documentation (if you ran step 4)
 
 ## Usage Examples
 
