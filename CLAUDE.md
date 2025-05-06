@@ -69,6 +69,14 @@ bash scripts/interactive_organize.sh
 - Offers file organization previews and summaries
 
 ```
+bash scripts/generate_structure.sh
+```
+- Creates a clean folder structure documentation with links
+- Generates README with directory tree and proper linking
+- Focuses on folder structure rather than listing all files
+- Can be used as a main README for the documentation repository
+
+```
 bash prepare_for_deployment.sh
 ```
 - Prepares the documentation for deployment to GitHub

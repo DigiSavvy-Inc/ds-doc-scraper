@@ -123,14 +123,23 @@ The interactive organizer lets you:
 - Maintain existing directory structure
 - Preview and get summaries of changes
 
-### 4. Prepare for GitHub Deployment (Optional)
+### 4. Generate Documentation Structure (Optional)
+
+Create a clean folder structure with proper links:
+```bash
+bash scripts/generate_structure.sh
+```
+
+This generates a README with just the folder structure and links, without listing all individual files.
+
+### 5. Prepare for GitHub Deployment (Optional)
 
 Create a clean deployment package for GitHub:
 ```bash
 bash prepare_for_deployment.sh
 ```
 
-### 5. View Your Documentation
+### 6. View Your Documentation
 
 The converted Markdown files will be in:
 - `knowledge_base/` - Raw scraped files
