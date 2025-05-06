@@ -77,9 +77,12 @@ def check_missing_docs(csv_path, docs_dir, column_name='url'):
     # Check if URL column exists
     if column_name not in df.columns:
         # Try to find any column that might contain URLs
-        url_columns = [col for col in df.columns if any(
-            'url' in col.lower() or 'link' in col.lower() or 'http' in str(df[col].iloc[0]).lower()
-        )]
+        url_columns = []
+        for col in df.columns:
+            if ('url' in col.lower() or 
+                'link' in col.lower() or 
+                (not df[col].empty and 'http' in str(df[col].iloc[0]).lower())):
+                url_columns.append(col)
         
         if url_columns:
             column_name = url_columns[0]
