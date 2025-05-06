@@ -178,6 +178,22 @@ bash scripts/organize_docs.sh knowledge_base --output organized_docs
 bash prepare_for_deployment.sh
 ```
 
+### Resuming an Interrupted Scrape
+
+If your scraping process was interrupted (e.g., by a system shutdown, network issue, or manual termination):
+
+```bash
+# 1. Identify which URLs haven't been processed yet
+python scripts/check_missing.py urls.csv knowledge_base
+
+# 2. This creates a missing_urls.csv file with unprocessed URLs
+
+# 3. Run the batch scraper on just the missing URLs to resume
+python scripts/batch_scraper.py missing_urls.csv --output knowledge_base --workers 10
+```
+
+This workflow allows you to efficiently continue from where you left off without re-scraping already processed URLs.
+
 ### Conservative Usage (Avoiding Rate Limiting)
 
 ```bash
