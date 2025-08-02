@@ -52,6 +52,18 @@ def process_url(url, output_dir, delay=1):
         base_url = f"{urlparse(url).scheme}://{urlparse(url).netloc}"
         markdown_content = html_to_markdown(soup, base_url)
         
+        # Add source URL at the top of the markdown content
+        if markdown_content.startswith('# '):
+            # If content starts with a title, insert after the title
+            lines = markdown_content.split('\n', 1)
+            if len(lines) > 1:
+                markdown_content = f"{lines[0]}\n\n> **Source**: [{url}]({url})\n\n{lines[1]}"
+            else:
+                markdown_content = f"{lines[0]}\n\n> **Source**: [{url}]({url})"
+        else:
+            # Insert at the beginning
+            markdown_content = f"> **Source**: [{url}]({url})\n\n{markdown_content}"
+        
         # Save to file
         filepath = save_markdown(markdown_content, output_dir, filename)
         
