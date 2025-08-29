@@ -16,9 +16,11 @@ content-scraper/
 │   ├── utils.py              # Helper functions
 │   ├── batch_scraper.py      # Parallel version for multiple URLs
 │   ├── check_missing.py      # Compare URLs with existing files
+│   ├── check_venv.py         # Virtual environment checker
 │   └── organize_docs.sh      # Organize markdown files
 ├── knowledge_base/           # Default output directory
 ├── requirements.txt          # Python dependencies
+├── setup.sh                  # Automated setup script (creates venv)
 └── README.md                 # Project documentation
 ```
 
@@ -83,7 +85,40 @@ bash prepare_for_deployment.sh
 - Creates a clean deployment directory with organized documentation
 - Generates a new README.md for the GitHub repository
 
-## Dependencies
+## Setup and Dependencies
+
+### Virtual Environment (Required)
+
+This project uses a virtual environment by default to ensure clean dependency management and avoid conflicts with system Python packages.
+
+#### Quick Setup
+```bash
+# Run the automated setup script
+bash setup.sh
+```
+
+This script will:
+- Create a Python virtual environment
+- Install all required dependencies
+- Make scripts executable (on Unix systems)
+- Provide activation instructions
+
+#### Manual Setup
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate  # macOS/Linux
+venv\Scripts\activate     # Windows
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+**Important**: Always ensure your virtual environment is activated before running any scripts. The scraper will warn you if you're not in a virtual environment.
+
+### Dependencies
 
 The Python scripts require the following dependencies (from requirements.txt):
 
@@ -93,22 +128,22 @@ The Python scripts require the following dependencies (from requirements.txt):
 - tqdm - For progress bars
 - Other standard libraries (datetime, json, etc.)
 
-Install dependencies with:
-```
-pip install -r requirements.txt
-```
-
 ## Best Practices When Working with This Repository
 
-1. **Running Scripts**:
+1. **Environment Setup**:
+   - Always use a virtual environment (run `bash setup.sh` for quick setup)
+   - Ensure virtual environment is activated before running scripts
+   - The scraper will warn if not running in a virtual environment
+
+2. **Running Scripts**:
    - Run scripts from the repository root
    - Use appropriate delay parameters to be considerate to web servers
    - Use the batch versions for large-scale scraping
 
-2. **File Naming Convention**:
+3. **File Naming Convention**:
    - Use kebab-case for filenames (e.g., `article-name.md`)
    - Avoid special characters or spaces in filenames
 
-3. **Input Format**:
+4. **Input Format**:
    - CSV files should have a column named 'url' (or similar) containing the URLs to scrape
    - Sitemap.xml files should follow the standard sitemap protocol
