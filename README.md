@@ -31,21 +31,20 @@ This guide will help you get up and running with the documentation scraper.
 
 ## Installation
 
-### Option 1: Standard Installation
+### Default Installation (Using Virtual Environment)
+
+#### Quick Setup (Recommended)
 
 ```bash
 # Clone the repository
 git clone https://github.com/DigiSavvy-Inc/ds-doc-scraper.git
 cd ds-doc-scraper
 
-# Install dependencies
-pip install -r requirements.txt
-
-# Make scripts executable (macOS/Linux only)
-chmod +x scripts/*.py scripts/*.sh
+# Run the setup script (creates venv and installs dependencies)
+bash setup.sh
 ```
 
-### Option 2: Using Virtual Environment (Recommended)
+#### Manual Setup
 
 ```bash
 # Clone the repository
@@ -68,11 +67,31 @@ pip install -r requirements.txt
 chmod +x scripts/*.py scripts/*.sh
 ```
 
+### Alternative: System-Wide Installation (Not Recommended)
+
+```bash
+# Clone the repository
+git clone https://github.com/DigiSavvy-Inc/ds-doc-scraper.git
+cd ds-doc-scraper
+
+# Install dependencies system-wide (requires admin/sudo)
+pip install -r requirements.txt
+
+# Make scripts executable (macOS/Linux only)
+chmod +x scripts/*.py scripts/*.sh
+```
+
+> **Important**: Using a virtual environment is strongly recommended to avoid conflicts with system Python packages and to maintain project isolation.
+
 > **Note for Windows users**: The `chmod` command is not needed on Windows. You may need to adjust how you run the scripts (e.g., `python scripts/scraper.py` instead of directly executing them).
 
 ## Quick Start Guide
 
 Here's a complete workflow to scrape your first documentation website:
+
+> **Note**: Always ensure your virtual environment is activated before running scripts:
+> - macOS/Linux: `source venv/bin/activate`
+> - Windows: `venv\Scripts\activate`
 
 ### 1. Get URLs to Scrape
 

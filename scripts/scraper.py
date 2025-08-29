@@ -3,11 +3,19 @@
 Main scraper for converting web content to Markdown.
 """
 import os
+import sys
 import argparse
 import pandas as pd
 from urllib.parse import urlparse
 from tqdm import tqdm
 import logging
+
+# Check for virtual environment (optional warning)
+try:
+    from check_venv import warn_if_not_venv
+    warn_if_not_venv()
+except ImportError:
+    pass  # check_venv is optional
 
 from utils import (
     setup_directory,
